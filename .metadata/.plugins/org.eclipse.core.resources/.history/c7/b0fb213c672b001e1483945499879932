@@ -1,0 +1,67 @@
+package ex10_guestbook;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+// DB처리하는 메서드들을 가지고 있는 클래스
+@Repository("guestdao")
+public class DAO {
+	// 실제 사용하는 클래스 : SqlSessionTemplate (무조건 getter,setter 만들어야 된다)
+	@Autowired
+	private  SqlSessionTemplate sqlSessionTemplate;
+	
+	public  SqlSessionTemplate getSqlSessionTemplate() {
+		return sqlSessionTemplate;
+	}
+
+	public  void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
+		GuestDAO.sqlSessionTemplate = sqlSessionTemplate;
+	}
+
+	// DB 처리하는 메서드들
+	// 전체 리스트
+	public  List<VO> getList(){
+		List<VO> list = sqlSessionTemplate.selectList("guestbook.list");
+		return list;
+	}
+	
+	// 정보 DB에 저장 (insert, update, delete는 결과가 int)
+	public  int getInsert(VO vo) {
+		int result = sqlSessionTemplate.insert("guestbook.insert", vo) ;
+		return result;		
+	}
+	
+	// primary key를 이용해서 하나의 상세정보 가져오기 
+	public  VO getOneList(String idx) {
+		VO vo = sqlSessionTemplate.selectOne("guestbook.onelist", idx);
+		return vo ;
+	}
+	
+	// 업데이트 (insert, update, delete의 결과는 int) 
+	public  int getUpdate(VO vo) {
+		int result = sqlSessionTemplate.update("guestbook.update", vo);
+		return result;
+	}
+	
+	public  int getDelete(String idx) {
+		int result = sqlSessionTemplate.delete("guestbook.delete", idx);
+		return result;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

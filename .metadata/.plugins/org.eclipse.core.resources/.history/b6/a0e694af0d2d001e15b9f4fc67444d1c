@@ -1,0 +1,54 @@
+package com.ict.test01;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+@Controller
+public class MyController2 {
+	
+	// 파일 업로드는 post 방식이어야 하고
+	// pom.xml에 cos 라이브러리를 넣어줘야 한다.
+	@PostMapping(value = "f_up.do")
+	public ModelAndView getFileUp(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView("test01/result3");
+		String path = request.getSession().getServletContext().getRealPath("/resources/images");
+		try {
+			MultipartRequest mr=
+					new MultipartRequest(request, path, 500*1024*1024,
+							"utf-8", new DefaultFileRenamePolicy());
+			String name = mr.getParameter("name");
+			String f_name = mr.getOriginalFileName("f_name");
+			String f_name2 = mr.getFilesystemName("f_name");
+			String file_type = mr.getContentType("f_name");
+			
+			File file = mr.getFile("f_name");
+			long size = file.length()/1024; // KB
+			SimpleDateFormat day = new SimpleDateFormat("yy.MM.dd hh:mm:ss E");
+			String lastday = day.format(file.lastModified());
+			
+			mv.addObject("name", name);
+			mv.addObject("f_name", f_name);
+			mv.addObject("f_name2", f_name2);
+			mv.addObject("file_type", file_type);
+			mv.addObject("size", size);
+			mv.addObject("lastday", lastday);
+			return mv;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return null;
+	}
+	
+	
+}

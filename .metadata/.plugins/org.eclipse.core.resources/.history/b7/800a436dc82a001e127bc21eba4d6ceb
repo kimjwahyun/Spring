@@ -1,0 +1,12 @@
+package ex08_web_annotation;
+
+public class MyClac2 {
+	int result = 0;
+	public int mul(int s1, int s2) {
+		return s1 * s2;
+	}
+	
+	public void div(int s1, int s2) {
+		return s1 / s2;
+	}
+}

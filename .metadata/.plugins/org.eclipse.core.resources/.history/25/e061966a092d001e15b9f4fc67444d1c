@@ -1,0 +1,19 @@
+package com.ict.test01;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class MyController2 {
+	
+	@PostMapping(value = "f_up.do")
+	public ModelAndView getFileUp(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView("test01/result3");
+		
+		return mv;
+	}
+}
