@@ -13,7 +13,11 @@
 		<li>파일이름(올릴 때 이름) : ${f_name }</li>
 		<li>파일타입 : ${f_type }</li>
 		<li>파일크기 : ${size} KB</li>
-		<img src="resources/images/${f_name}" style="width: 150px;">
+		<li> 
+			<a href="/down.do?f_name=${f_name}">
+				<img src="resources/images/${f_name}" style="width: 150px;">
+			</a>
+		</li>
 	</h2>
 </body>
 </html>
