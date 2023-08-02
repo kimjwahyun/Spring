@@ -16,14 +16,6 @@ public class MembersController {
 	@Autowired
 	private MembersService membersService;
 	
-	public MembersService getMembersService() {
-		return membersService;
-	}
-
-	public void setMembersService(MembersService membersService) {
-		this.membersService = membersService;
-	}
-
 	@GetMapping("/members_list.do")
 	public ModelAndView getMembersList() {
 		ModelAndView mv = new ModelAndView("members/list");

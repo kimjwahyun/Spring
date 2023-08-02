@@ -14,14 +14,6 @@ public class GuestBookServiceImpl implements GuestBookService{
 	@Autowired
 	private GuestBookDAO guestBookDAO;
 	
-	public GuestBookDAO getGuestBookDAO() {
-		return guestBookDAO;
-	}
-
-	public void setGuestBookDAO(GuestBookDAO guestBookDAO) {
-		this.guestBookDAO = guestBookDAO;
-	}
-
 	@Override
 	public List<GuestBookVO> getGuestBookList() {
 		return guestBookDAO.getGuestBookList();
@@ -29,8 +21,7 @@ public class GuestBookServiceImpl implements GuestBookService{
 
 	@Override
 	public GuestBookVO getGuestBookOneList(String idx) {
-		// TODO Auto-generated method stub
-		return null;
+		return guestBookDAO.getGuestBookOneList(idx);
 	}
 
 	@Override
@@ -41,14 +32,12 @@ public class GuestBookServiceImpl implements GuestBookService{
 
 	@Override
 	public int getGuestBookUpdate(GuestBookVO gvo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return guestBookDAO.getGuestBookUpdate(gvo);
 	}
 
 	@Override
 	public int getGuestBookDelete(String idx) {
-		// TODO Auto-generated method stub
-		return 0;
+		return guestBookDAO.getGuestBookDelete(idx);
 	}
 	
 }

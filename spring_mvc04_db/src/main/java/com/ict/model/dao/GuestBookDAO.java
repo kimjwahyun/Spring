@@ -13,22 +13,29 @@ public class GuestBookDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	public SqlSessionTemplate getSqlSessionTemplate() {
-		return sqlSessionTemplate;
-	}
-
-	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
-		this.sqlSessionTemplate = sqlSessionTemplate;
-	}
-
 	// 서비스에서 db 처리 하는 메서드를 모두 받아 주어야 한다.
 	// 리스트 
 	public List<GuestBookVO> getGuestBookList(){
 		return sqlSessionTemplate.selectList("guestbook.list");
 	}
 	
-	// 삽입
+	// 방명록 쓰기
 	public int getGuestBookInsert(GuestBookVO gvo) {
 		return sqlSessionTemplate.insert("guestbook.insert", gvo);
+	}
+	
+	// 상세보기
+	public GuestBookVO getGuestBookOneList(String idx) {
+		return sqlSessionTemplate.selectOne("guestbook.onelist", idx);
+	}
+	
+	// 삭제
+	public int getGuestBookDelete(String idx) {
+		return sqlSessionTemplate.delete("guestbook.delete", idx);
+	}
+	
+	// 수정
+	public int getGuestBookUpdate(GuestBookVO gvo) {
+		return sqlSessionTemplate.update("guestbook.update", gvo);
 	}
 }

@@ -14,14 +14,6 @@ public class MembersServiceImpl implements MembersService{
 	@Autowired
 	private MembersDAO membersDAO;
 	
-	public MembersDAO getMembersDAO() {
-		return membersDAO;
-	}
-
-	public void setMembersDAO(MembersDAO membersDAO) {
-		this.membersDAO = membersDAO;
-	}
-
 	@Override
 	public List<MembersVO> membersList() {
 		List<MembersVO> list = membersDAO.membersList();

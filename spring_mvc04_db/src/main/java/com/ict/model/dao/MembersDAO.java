@@ -14,14 +14,6 @@ public class MembersDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	public SqlSessionTemplate getSessionTemplate() {
-		return sqlSessionTemplate;
-	}
-
-	public void setSessionTemplate(SqlSessionTemplate sessionTemplate) {
-		this.sqlSessionTemplate = sessionTemplate;
-	}
-	
 	// Members 리스트
 	public List<MembersVO> membersList() {
 		List<MembersVO> list = sqlSessionTemplate.selectList("members.list");

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -44,9 +45,10 @@ public class Summer_Controller {
 			String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 			fname = f.getOriginalFilename();
 			
-			// 같은 파일 이름이 있으면 업로드를 못하므로 이름을 변경 시켜야 한다.
-			// 단, 한번 이상은 안된다. (나중에 겹치지 않게 만들어야 한다.)
-			fname = fileReName.exec(path, fname);
+			UUID uuid = UUID.randomUUID();
+			// 같은 파일 이름이 있으면 파일명을 수정해준다.
+			fname = uuid.toString()+"_"+f.getOriginalFilename();
+			
 			try {
 			// 업로드
 				f.transferTo(new File(path, fname));
