@@ -62,3 +62,34 @@
 8월 02, 2023 10:14:09.744 [4216:10544:0802/101409.744:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
 8월 02, 2023 11:47:49.725 [3900:9832:0802/114749.725:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
 8월 02, 2023 11:47:49.731 [3900:9832:0802/114749.731:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+
+8월 03, 2023 10:46:34.465 NEW SESSION
+8월 03, 2023 10:46:34.465 [14780:12112:0803/104634.464:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 10:46:34.472 [14780:12112:0803/104634.471:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 10:46:34.473 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 03, 2023 10:47:45.497 [7412:6800:0803/104745.497:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 10:47:45.505 [7412:6800:0803/104745.505:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 10:47:45.507 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 03, 2023 11:07:47.967 [7720:4532:0803/110747.967:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 11:07:47.973 [7720:4532:0803/110747.973:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 11:07:47.976 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 03, 2023 11:25:43.740 [11916:2440:0803/112543.740:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 11:25:43.747 [11916:2440:0803/112543.747:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 11:25:43.749 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 03, 2023 12:07:11.747 [11916:2440:0803/120711.747:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 03, 2023 12:07:11.747 [11916:2440:0803/120711.747:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 03, 2023 14:57:17.97 [8208:18420:0803/145717.097:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 14:57:17.102 [8208:18420:0803/145717.102:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 14:57:17.104 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 03, 2023 15:20:49.289 [14088:7572:0803/152049.289:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 15:20:49.296 [14088:7572:0803/152049.296:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 15:20:49.298 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 03, 2023 16:35:46.307 [14088:12560:0803/163546.307:ERROR:mcs_client.cc(750)] Received close command, resetting connection.
+8월 03, 2023 17:22:55.239 [8284:6548:0803/172255.239:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 17:22:55.244 [8284:6548:0803/172255.244:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 17:22:55.254 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 03, 2023 17:23:23.42 [8284:6548:0803/172323.042:ERROR:CONSOLE(1)] "Uncaught (in promise) RangeError: Invalid line number 30 in 1-line document", source: devtools://devtools/bundled/devtools-frontend/front_end/third_party/codemirror.next/chunk/codemirror.js (1)
+8월 03, 2023 17:28:39.431 [6360:14236:0803/172839.431:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 17:28:39.438 [6360:14236:0803/172839.438:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 03, 2023 17:28:39.440 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 03, 2023 17:58:52.99 [6360:14368:0803/175852.099:ERROR:mcs_client.cc(750)] Received close command, resetting connection.

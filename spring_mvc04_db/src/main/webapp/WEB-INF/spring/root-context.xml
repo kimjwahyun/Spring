@@ -37,5 +37,7 @@
 	<!-- 여기서는 db처리를 하기 위해 밑에 Namepaces 눌러서 context 체크 -->
 	<context:annotation-config />
 	<context:component-scan base-package="com.ict.*" />
+	<!--위에꺼랑 같다! 둘 중에 아무거나 쓰면 된다.
+	<context:component-scan base-package="com.ict." />-->
 
 </beans>
