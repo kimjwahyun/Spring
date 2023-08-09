@@ -26,7 +26,6 @@ public class GuestBookServiceImpl implements GuestBookService{
 
 	@Override
 	public int getGuestBookInsert(GuestBookVO gvo) {
-		
 		return guestBookDAO.getGuestBookInsert(gvo);
 	}
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<!-- 오라클 연결 정보 -->
+			<!-- 
+			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+			<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+			<property name="username" value="C##kimjwahyun" />
+			<property name="password" value="1111" /> 
+			-->
+			<!-- 마리아DB 연결 정보 -->
+			<property name="driverClassName" value="org.mariadb.jdbc.Driver" />
+			<property name="url" value="jdbc:mariadb://localhost:3306/ictedu" />
+			<property name="username" value="jwahyun94" />
+			<property name="password" value="1111" />
+		</bean>
+		
+		<!-- mybatis의 config 역할(오라클과 mybatis 연결의 역할, mapper 위치) -->
+		<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource" />
+			<!-- <property name="mapperLocations" value="classpath*:ex09_db/mapper.xml" /> -->
+			<!-- config 위치 -->
+			<!-- mybatis-config.xml의 위치는 src/main/resources/mybatis-config.xml -->
+			<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		</bean>
+		
+		<!-- DAO에서 사용할 SqlSessoinTemplate클래스를 객체로 만들자 -->
+		<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+			<constructor-arg ref="sqlSessionFactoryBean" />
+		</bean>	
+	
+	<!-- 여기서는 db처리를 하기 위해 밑에 Namepaces 눌러서 context 체크 -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.ict.*" />
+	<!--위에꺼랑 같다! 둘 중에 아무거나 쓰면 된다.
+	<context:component-scan base-package="com.ict." />-->
+		
+</beans>

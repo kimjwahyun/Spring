@@ -46,11 +46,10 @@ public class GuestBook2Controller {
 	@PostMapping("/guestbook2_insert.do")
 	public ModelAndView getGuestBook2Insert(GuestBook2VO g2vo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("redirect:/guestbook2_list.do");
+		// request.getSession() => Session을 불러온다.
+		// getRealPath("내가 저장할 장소")
+		String path = request.getSession().getServletContext().getRealPath("/resources/images");
 		try {
-			// request.getSession() => Session을 불러온다.
-			// getRealPath("내가 저장할 장소")
-			String path = request.getSession().getServletContext().getRealPath("/resources/images");
-			
 			MultipartFile f_param = g2vo.getFile();
 			if(f_param.isEmpty()) {
 				g2vo.setF_name("");

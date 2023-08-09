@@ -12,54 +12,46 @@
 	div{width: 600px; margin:auto; text-align: center;}
 </style>
 <script type="text/javascript">
-	function save_go(f) {
-		f.action="/02_jsp/GuestBook2?cmd=write_ok";
-		f.submit();
+	function delete_go(f) {
+		var pwd = "${vo.pwd}"	;
+		if(f.pwd.value == pwd){
+			var chk = confirm("정말 삭제할까요?");
+			if(chk){
+				f.action="/jsp/GuestBook2";
+				f.submit();
+			}else{
+				history.go(-1);
+			}
+			
+		}else{
+			alert("비빌번호 틀림");
+			f.pwd.value="";
+			f.pwd.focus();
+			return;
+		}
 	}
 </script>
 </head>
 <body>
 	<div>
-		<h2>방명록 : 작성화면</h2>
+		<h2>방명록 : 삭제화면</h2>
 		<hr />
-		<p>[<a href="/02_jsp/GuestBook2?cmd=list">목록으로 이동</a>]</p>
+		<p>[<a href="/jsp/GuestBook2?cmd=list">목록으로 이동</a>]</p>
 		
-		<!-- 파일첨부하려면 -->
-		<form method="post" enctype="multipart/form-data">
+		<form method="post">
 			<table>
 				<tr align="center">
-					<td bgcolor="#99ccff">작성자</td>
-					<td><input type="text" name="name" size ="20"/></td>
-				</tr>
-				<tr align="center">
-					<td bgcolor="#99ccff">제  목</td>
-					<td><input type="text" name="subject" size ="20"/></td>
-				</tr>
-				<tr align="center">
-					<td bgcolor="#99ccff">email</td>
-					<td><input type="text" name="email" size ="20"/></td>
-				</tr>
-				<tr align="center">
 					<td bgcolor="#99ccff">비밀번호</td>
-					<td><input type="password" name="pwd" size ="20"/></td>
-				</tr>
-				<tr align="center">
-					<td bgcolor="#99ccff">첨부파일</td>
-					<td><input type="file" name="f_name" size ="20"/></td>
-				</tr>
-				<tr align="center">
-					<td colspan="2">
-						<textarea rows="10" cols="60" name="content"></textarea>
-					</td>
+					<td><input type="password" name="pwd" size ="20"></td>
 				</tr>
 				<tfoot>
 					<tr align="center">
 						<td colspan="2">
-							<%-- method="post" --%>
-							<input type="hidden" value="write_ok" name="cmd">
-							<input type="button" value="저장" onclick="save_go(this.form)" />
+							<input type="hidden" name="idx" value="${vo.idx }">
+							<input type="hidden" name="cmd" value="delete_ok">
+							<input type="button" value="삭제" onclick="delete_go(this.form)">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="reset" value="취소" />
+							<input type="reset" value="취소" >
 						</td>
 					</tr>
 				</tfoot>

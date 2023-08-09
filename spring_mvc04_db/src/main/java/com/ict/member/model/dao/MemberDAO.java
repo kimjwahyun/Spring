@@ -14,7 +14,7 @@ public class MemberDAO {
 	public int getMemberAdd(MemberVO m2vo) {
 		return sqlSessionTemplate.insert("member.insert", m2vo);
 	}
-	public String getMemberPwd(String m_id) {
+	public MemberVO getMemberPwd(String m_id) {
 		return sqlSessionTemplate.selectOne("member.selectPwd", m_id);
 	}
 }
