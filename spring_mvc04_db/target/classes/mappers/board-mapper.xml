@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<!-- 페이징 기법 -->
+	<select id="count" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<!-- 페이징 기법 -->
+	<select id="list" parameterType="Map" resultType="bv">
+		select * from board order by groups desc, lev asc limit #{limit} offset #{offset}
+	</select>
+	
+	<!-- 원글 삽입 -->
+	<insert id="insert" parameterType="bv">
+		<selectKey keyProperty="groups" resultType="String" order="BEFORE">
+			SELECT (IFNULL(MAX(idx),0)+1) as groups FROM board
+		</selectKey>
+		insert into board(writer, title, content, pwd, hit, groups, step, lev, regdate, f_name)
+		values(#{writer},#{title},#{content},#{pwd},0,#{groups},0,0,sysdate(),#{f_name})
+	</insert>
+	
+	<update id="hit" parameterType="String">
+		update board set hit = hit +1 where idx = #{idx}
+	</update>
+	
+	<select id="onelist" parameterType="String" resultType="bv">
+		select * from board where idx = #{idx}
+	</select>
+	
+	<!-- levup -->
+	<!-- ** groups와 같은 원글을 찾아서 레벨이 같거나 크면 레벨을 증가시키자 -->
+	<update id="levupdate" parameterType="map">
+		update board set lev = lev+1 where groups =#{groups} and lev >= #{lev}
+	</update>
+	<!-- ansupdate 댓글 삽입 -->
+	<insert id="ansinsert" parameterType="bv">
+		insert into board(writer, title, content, pwd, hit, groups, step, lev, regdate, f_name)
+		values(#{writer},#{title},#{content},#{pwd},0,#{groups},#{step},#{lev},sysdate(),#{f_name})
+	</insert>
+	
+	<update id="update" parameterType="bv">
+		update board set writer = #{writer}, content = #{content}, 
+		title = #{title}, f_name = #{f_name} where idx = #{idx}
+	</update>
+	
+</mapper>

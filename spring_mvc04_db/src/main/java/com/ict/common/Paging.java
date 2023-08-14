@@ -11,7 +11,7 @@ public class Paging {
 	private int nowBlock = 1; // 현재 블록
 	
 	// mariadb sql - limit 에 해당
-	private int numPerPage = 3; // 한 페이지 안에 존재하는 게시물의 수 
+	private int numPerPage = 10; // 한 페이지 안에 존재하는 게시물의 수 
 	private int pagePerBlock = 3; // 한 블록안에 존재하는 페이지의 수
 	
 	private int totalRecord = 0; // 전체 게시물의 수 (원글의 수)

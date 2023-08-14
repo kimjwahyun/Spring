@@ -208,7 +208,8 @@ public class BBS_Controller {
 	}
 
 	@PostMapping("/bbs_updateForm.do")
-	public ModelAndView bbsUpdateForm(@ModelAttribute("cPage") String cPage, @ModelAttribute("b_idx") String b_idx) {
+	public ModelAndView bbsUpdateForm(@ModelAttribute("cPage") String cPage, 
+			@ModelAttribute("b_idx") String b_idx) {
 		ModelAndView mv = new ModelAndView("bbs/update");
 		BBS_VO bvo = bBS_Service.getOneList(b_idx);
 		mv.addObject("bvo", bvo);

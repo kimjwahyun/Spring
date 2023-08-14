@@ -46,16 +46,21 @@ public class MemberController {
 		}else {
 			session.setAttribute("mvo", mvo);
 			session.setAttribute("loginChk", "ok");
+			// admin 성공시
+			if(mvo.getM_id().equals("admin")) {
+				session.setAttribute("admin", "ok");
+			}
 			return mv;
 		}
 	}
 	
 	@GetMapping("/member_logout.do")
 	public ModelAndView getLogout(HttpSession session) {
-		// 세션 초기화
+		// 세션 초기화 (싹 다 지워짐)
 		// session.invalidate();
 		session.removeAttribute("mvo");
 		session.removeAttribute("loginChk");
+		session.removeAttribute("admin");
 		return new ModelAndView("redirect:/");
 	}
 }

@@ -1,0 +1,40 @@
+퍼블릭 IPv4 주소
+3.25.234.154
+
+퍼블릭 IPv4 DNS
+ec2-3-25-234-154.ap-southeast-2.compute.amazonaws.com
+
+http = 80
+https = 443
+원격접속할 수 있는 포트 번호= 22
+
+
+
+
+sudo systemctl start mariadb
+sudo systemctl status mariadb
+sudo systemctl stop mariadb
+
+sudo mysql -u root -p
+비번 : enter
+
+루트에 관한 설명
+use mysql
+set password for 'root'@'localhost' = password('1111');
+flush privileges;
+
+
+CREATE USER 'jwahyun94'@'%' IDENTIFIED BY '1111';
+GRANT ALL PRIVILEGES ON *.* TO 'jwahyun94'@'%';
+
+CREATE DATABASE ictedu;
+SHOW DATABASES;
+
+sudo mysql -u nohssam73 -p
+확인 후 heid 
+
+EC2 만들 사용한 키 페언ㄴ XXXX.pem 이다.
+heid 에서는 XXXX.ppk가 있어야 한다.
+그래서 putt를 이용해서 pem을 ppk로 만든다.
+1.putt 실행 후 아래 keygen 버튼 클릭
+2. 로드 버튼을 눌러서 XXXX.pem
