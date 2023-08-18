@@ -4,49 +4,56 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	
-	<!-- 
-		1. jdbc.properties 파일을 로드하기 위해서 context라는 네임스페이스와 스키마 객체가 필요하다.
-		   그래서 context 네임스페이스를 추가 하자.
-		2. pom.xml에서 BasicDataSource
-	 -->
-	 <!-- jdbc 설정 -->
-	 <context:property-placeholder location="classpath:props/jdbc.properties"/> 
-	 <!--  -->
-	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-	
-			<!-- 마리아DB 연결 정보 -->
-			<property name="driverClassName" value="${jdbc.driver}" />
-			<!-- <property name="url" value="jdbc:mariadb://3.25.234.154:3306/ictedu" /> -->
-			<property name="url" value="${jdbc.url}" /> 
-			<property name="username" value="${jdbc.user}" />
-			<property name="password" value="${jdbc.pwd}" />
-			<!-- 동시에 사용할 수 있는 최대 커넥션 수 -->
-			<property name="maxActive" value="${jdbc.maxActiv}"></property>
-			<!-- 커넥션 풀에 반납할 때 최대로 유지 되는 커넥션 수  -->
-			<property name="maxIdle" value="${jdbc.maxIdle}"></property>
-			<!-- 커넥션 풀에 반납할 때 최소로 유지 되는 커넥션 수  -->
-			<property name="minIdle" value="${jdbc.minIdle}"></property>
-		</bean>
-		
-		<!-- mybatis의 config 역할(오라클과 mybatis 연결의 역할, mapper 위치) -->
-		<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-			<property name="dataSource" ref="dataSource" />
-			<!-- <property name="mapperLocations" value="classpath*:ex09_db/mapper.xml" /> -->
-			<!-- config 위치 -->
-			<!-- mybatis-config.xml의 위치는 src/main/resources/mybatis-config.xml -->
-			<property name="configLocation" value="classpath:mybatis-config.xml"></property>
-		</bean>
-		
-		<!-- DAO에서 사용할 SqlSessoinTemplate클래스를 객체로 만들자 -->
-		<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-			<constructor-arg ref="sqlSessionFactoryBean" />
-		</bean>	
-	
+
+	<!-- 1. jdbc.properties 파일을 로드하기 위해서 context라는 네임스페이스와 스키마 객체가 필요하다. 그래서 
+		context 네임스페이스를 추가 하자. 2. pom.xml에서 BasicDataSource -->
+	<!-- jdbc 설정 -->
+	<context:property-placeholder
+		location="classpath:props/jdbc.properties" />
+	<!-- -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+
+		<!-- 마리아DB 연결 정보 -->
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<!-- <property name="url" value="jdbc:mariadb://3.25.234.154:3306/ictedu" 
+			/> -->
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.pwd}" />
+		<!-- 동시에 사용할 수 있는 최대 커넥션 수 -->
+		<property name="maxActive" value="${jdbc.maxActiv}"></property>
+		<!-- 커넥션 풀에 반납할 때 최대로 유지 되는 커넥션 수 -->
+		<property name="maxIdle" value="${jdbc.maxIdle}"></property>
+		<!-- 커넥션 풀에 반납할 때 최소로 유지 되는 커넥션 수 -->
+		<property name="minIdle" value="${jdbc.minIdle}"></property>
+	</bean>
+
+	<!-- mybatis의 config 역할(오라클과 mybatis 연결의 역할, mapper 위치) -->
+	<bean id="sqlSessionFactoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="mapperLocations" value="classpath*:ex09_db/mapper.xml" 
+			/> -->
+		<!-- config 위치 -->
+		<!-- mybatis-config.xml의 위치는 src/main/resources/mybatis-config.xml -->
+		<property name="configLocation"
+			value="classpath:mybatis-config.xml"></property>
+	</bean>
+
+	<!-- DAO에서 사용할 SqlSessoinTemplate클래스를 객체로 만들자 -->
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean" />
+	</bean>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
 	<!-- 여기서는 db처리를 하기 위해 밑에 Namepaces 눌러서 context 체크 -->
 	<context:annotation-config />
 	<context:component-scan base-package="com.ict.*" />
-	<!--위에꺼랑 같다! 둘 중에 아무거나 쓰면 된다.
-	<context:component-scan base-package="com.ict." />-->
+	<!--위에꺼랑 같다! 둘 중에 아무거나 쓰면 된다. <context:component-scan base-package="com.ict." 
+		/> -->
 
 </beans>
